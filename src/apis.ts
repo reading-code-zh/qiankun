@@ -68,6 +68,7 @@ export function registerMicroApps<T extends ObjectType>(
   unregisteredApps.forEach((app) => {
     const { name, activeRule, loader = noop, props, ...appConfig } = app;
 
+    // single-spa 方法
     registerApplication({
       name,
       app: async () => {

@@ -263,7 +263,9 @@ export async function loadApp<T extends ObjectType>(
   } = configuration;
 
   // get the entry html content and script executor
+  // 使用了 import-html-entry 来获取资源
   const { template, execScripts, assetPublicPath, getExternalScripts } = await importEntry(entry, importEntryOpts);
+
   // trigger external scripts loading to make sure all assets are ready before execScripts calling
   await getExternalScripts();
 
@@ -285,6 +287,8 @@ export async function loadApp<T extends ObjectType>(
   }
 
   const scopedCSS = isEnableScopedCSS(sandbox);
+
+
   let initialAppWrapperElement: HTMLElement | null = createElement(
     appContent,
     strictStyleIsolation,
